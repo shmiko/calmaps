@@ -20,28 +20,12 @@ var mongoose   = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1/calmapit');
 //mongoose.connect('mongodb://username:password@kahana.mongohq.com:10073/node-api');
 
-// Start the Node Server
-app.listen(port);
-console.log('CalMagic happens on port ' + port);
-
 var Calevent     = require('./server/models/calevent');
 
 // Defining the Routes for our API
-var routes = require('./server/routes/calevents')
+var routes = require('./server/routes/calevents');
 
-// Start the Router
-var router = express.Router();
-
-// A simple middleware to use for all Routes and Requests
-router.use(function(req, res, next) {
-// Give some message on the console
-console.log('An action was performed by the server.');
-// Is very important using the next() function, without this the Route stops here.
-next();
-});
-
-
-
-
-// register the route
-app.use('/api', router);
+app.use('/', routes);
+// Start the Node Server
+app.listen(port);
+console.log('CalMagic happens on port ' + port);

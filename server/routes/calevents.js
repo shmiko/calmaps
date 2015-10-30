@@ -1,4 +1,20 @@
 
+// Start the Router
+var router = express.Router();
+
+// A simple middleware to use for all Routes and Requests
+router.use(function(req, res, next) {
+// Give some message on the console
+console.log('An action was performed by the server.');
+// Is very important using the next() function, without this the Route stops here.
+next();
+});
+
+
+
+
+// register the route
+app.use('/api', router);
 // Default message when access the API folder through the browser
 router.get('/', function(req, res) {
 // Give some Hello there message
