@@ -1,0 +1,33 @@
+{
+  "name": "calmapit-api",
+  "version": "1.0.0",
+  "description": "Calendar Map Itinerary",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "calmapit",
+    "calendar",
+    "map",
+    "itinerary"
+  ],
+  "author": "shmik.com",
+  "license": "MIT",
+  "engines": {
+    "node": "0.8.4",
+    "npm": "1.1.49"
+  },
+  "dependencies": {
+    "body-parser": "^1.0.2",
+    "express": "^4.1.1",
+    "method-override": "^1.0.0",
+    "mongoose": "^4.2.3",
+    "morgan": "^1.0.0",
+    "nodemon": "^1.2.0",
+    "mongoskin": "~1.4.1",
+    "expect.js": "^0.3.1",
+    "mocha": "^1.18.2",
+    "superagent": "^0.17.0"
+      }
+}
