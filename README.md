@@ -1,1 +1,1 @@
-CalMapIt - A MEAN Calendar Map Itinerary App
+CalMapIt - A MEAN Calendar Map Itinerary Application
