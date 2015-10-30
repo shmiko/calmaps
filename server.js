@@ -27,6 +27,7 @@ console.log('CalMagic happens on port ' + port);
 var Calevent     = require('./server/models/calevent');
 
 // Defining the Routes for our API
+var routes = require('./server/routes/calevents')
 
 // Start the Router
 var router = express.Router();
