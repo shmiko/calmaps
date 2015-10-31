@@ -1,15 +1,15 @@
-var superagent = require('superagent')
-var expect = require('expect.js')
+var superagent = require('superagent');
+var expect = require('expect.js');
 var debugging = false;
 
 
 describe('express rest api server testing', function(){
-  console.log("")
-  console.log("*************************")
-  console.log("API TESTS STARTING")
-  console.log("*************************")   
+  console.log("");
+  console.log("*************************");
+  console.log("API TESTS STARTING");
+  console.log("*************************");
   
-  var id
+  var id;
   var coll = 'calevents';
   var std_console_output = coll + ". id is " + id + " response was ";
   var coll2 = 'tests';
@@ -22,17 +22,17 @@ describe('express rest api server testing', function(){
       })
       .end(function(e,res){
         if (debugging) {
-          console.log('post to ',std_console_output,res.body)
+          console.log('post to ',std_console_output,res.body);
         }
-        expect(e).to.eql(null)
-        expect(res.body.length).to.eql(1)
-        expect(res.body[0]._id.length).to.eql(24)
-        id = res.body[0]._id
-        done()
+        expect(e).to.eql(null);
+        expect(res.body.length).to.eql(1);
+        expect(res.body[0]._id.length).to.eql(24);
+        id = res.body[0]._id;
+        done();
         if (debugging) {
-          console.log('post to ' + coll,' completed!')
-          console.log("*************************")
-          console.log("")
+          console.log('post to ' + coll,' completed!');
+          console.log("*************************");
+          console.log("");
         }  
       })    
   })
@@ -43,17 +43,17 @@ describe('express rest api server testing', function(){
     superagent.get('http://localhost:8080/collections/' + coll + '/' + id)
       .end(function(e, res){
         if (debugging) {
-          console.log('gets a ',std_console_output,res.body)
+          console.log('gets a ',std_console_output,res.body);
         }
-        expect(e).to.eql(null)
-        expect(typeof res.body).to.eql('object')
-        expect(res.body._id.length).to.eql(24)        
-        expect(res.body._id).to.eql(id)        
+        expect(e).to.eql(null);
+        expect(typeof res.body).to.eql('object');
+        expect(res.body._id.length).to.eql(24);        
+        expect(res.body._id).to.eql(id);        
         done()
         if (debugging) {
-          console.log('gets a ' + coll,' completed!')
-          console.log("*************************")
-          console.log("")
+          console.log('gets a ' + coll,' completed!');
+          console.log("*************************");
+          console.log("");
         }
       })
   })
@@ -62,16 +62,16 @@ describe('express rest api server testing', function(){
     superagent.get('http://localhost:8080/collections/' + coll)
       .end(function(e, res){
         if (debugging) {
-          console.log('retrieves all ',std_console_output,res.body)
+          console.log('retrieves all ',std_console_output,res.body);
         }
-        expect(e).to.eql(null)
-        expect(res.body.length).to.be.above(0)
-        expect(res.body.map(function (item){return item._id})).to.contain(id)        
-        done()
+        expect(e).to.eql(null);
+        expect(res.body.length).to.be.above(0);
+        expect(res.body.map(function (item){return item._id})).to.contain(id);        
+        done();
         if (debugging) {
-          console.log('gets all ' + coll,' completed!')
-          console.log("*************************")
-          console.log("")
+          console.log('gets all ' + coll,' completed!');
+          console.log("*************************");
+          console.log("");
         }
       })
   })
@@ -82,11 +82,11 @@ describe('express rest api server testing', function(){
         , calevent_location: 'New York'})
       .end(function(e, res){
         if (debugging) {
-          console.log('updates a ',std_console_output,res.body)
+          console.log('updates a ',std_console_output,res.body);
         }
-        expect(e).to.eql(null)
-        expect(typeof res.body).to.eql('object')
-        expect(res.body.msg).to.eql('success')        
+        expect(e).to.eql(null);
+        expect(typeof res.body).to.eql('object');
+        expect(res.body.msg).to.eql('success')       
         done()
         if (debugging) {
           console.log('updates a ' + coll,' completed!')
