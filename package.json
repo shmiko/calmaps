@@ -19,15 +19,17 @@
     "npm": "1.1.49"
   },
   "dependencies": {
-    "body-parser": "^1.0.2",
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "expect.js": "^0.3.1",
     "express": "^4.1.1",
     "method-override": "^1.0.0",
-    "mongoose": "^4.2.3",
-    "morgan": "^1.0.0",
-    "nodemon": "^1.2.0",
-    "mongoskin": "~1.4.1",
-    "expect.js": "^0.3.1",
     "mocha": "^1.18.2",
+    "mongoose": "^4.2.3",
+    "mongoskin": "~1.4.1",
+    "morgan": "^1.6.1",
+    "nodemon": "^1.2.0",
+    "static-favicon": "^2.0.0-alpha",
     "superagent": "^0.17.0"
-      }
+  }
 }

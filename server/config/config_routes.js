@@ -1,56 +1,116 @@
 'use strict';
-var SabreDevStudio = require('sabre-dev-studio');
-var sabreDevStudio = new SabreDevStudio({
-    client_id:     'V1:dfgo6wbvhe3rsjlx:DEVCENTER:EXT',
-client_secret: 'FrgiCK75',
-uri:           'https://api.test.sabre.com'
-});
-var options = {};
+// Setup Routes
+var routes = require('../routes/index.js');
+var users = require('../routes/users');
+var calevents = require('../routes/calevents');
 
-module.exports = function(app) {
-app.get('/api/v1/themes', function(req,res) {
-sabreCall('/v1/lists/supported/shop/themes', res);
-});
+// Start the Router
+var router = express.Router();
 
-app.get('/api/v1/routes', function(req,res) {
-sabreCall('/v1/shop/flights/fares?origin=CLT&departuredate=2015-10-15&returndate=2015-10-25', res);
-});
-
-app.get('/api/v1/top', function(req,res) {
-sabreCall('/v1/lists/top/destinations?origin=NYC&lookbackweeks=8&topdestinations=5', res);
+// A simple middleware to use for all Routes and Requests
+router.use(function(req, res, next) {
+// Give some message on the console
+console.log('An action was performed by the server.');
+// Is very important using the next() function, without this the Route stops here.
+next();
 });
 
-app.get('/api/v1/cities', function(req,res) {
-sabreCall('/v1/lists/supported/cities', res);
+
+
+
+// register the route
+app.use('/api', router);
+// Default message when access the API folder through the browser
+router.get('/', function(req, res) {
+// Give some Hello there message
+res.json({ message: 'Hello SPA, the API is working!' });
 });
 
-app.get('/api/v1/places', function(req,res) {
-sabreCall('/v1/shop/flights/fares?origin=' + req.query.origin +
-'&departuredate=' + req.query.departuredate +
-'&returndate=' + req.query.returndate +
-'&maxfare=' + req.query.maxfare, res);
+// When accessing the events Routes
+router.route('/calevents')
+
+// create a event when the method passed is POST
+.post(function(req, res) {
+
+	// create a new instance of the Calevent model
+	var calevent = new Calevent();
+
+	// set the calevent properties (comes from the request)
+	  calevent.calevent_name = req.body.calevent_name;
+	  calevent.calevent_location = req.body.calevent_location;
+	  calevent.calevent_start_date = req.body.calevent_start_date;
+	  calevent.calevent_end_date = req.body.calevent_end_date;
+	  calevent.calevent_category = req.body.calevent_category;
+	  calevent.calevent_description = req.body.calevent_description;
+
+	// save the data received
+	  calevent.save(function(err) {
+	    if (err)
+	      res.send(err);
+
+	// give some success message
+	  res.json({ message: 'calevent successfully created!' });
+	  });
+})
+
+// get all the calevents when a method passed is GET
+.get(function(req, res) {
+  Calevent.find(function(err, calevents) {
+    if (err)
+      res.send(err);
+
+    res.json(calevents);
+  });
 });
 
-};
+// on accessing calevent Route by id
+router.route('/calevents/:calevent_id')
 
-function sabreCall(q, res) {
-sabreDevStudio.get(q, options, function(err, data) {
-response(res, err, data);
-});
-}
+// get the calevent by id
+.get(function(req, res) {
+  Calevent.findById(req.params.event_id, function(err, 
+    calevent) {
+    if (err)
+      res.send(err);
+      res.json(calevent);
+    });
+})
 
-function response(res, err, data) {
-if (err) {
-res.status(200).send({
-'status': false,
-'message': 'Error',
-'info': err
+// update the calevent by id
+.put(function(req, res) {
+  Calevent.findById(req.params.event_id, function(err, calevent) {
+
+    if (err)
+      res.send(err);
+
+// set the calevent properties (comes from the request)
+  calevent.calevent_name = req.body.calevent_name;
+  calevent.calevent_location = req.body.calevent_location;
+  calevent.calevent_start_date = req.body.calevent_start_date;
+  calevent.calevent_end_date = req.body.calevent_end_date;
+  calevent.calevent_category = req.body.calevent_category;
+  calevent.calevent_description = req.body.calevent_description;
+
+// save the data received
+  calevent.save(function(err) {
+    if (err)
+      res.send(err);
+      // give some success message
+      res.json({ message: 'calevent successfully updated!'});
+  });
+
+  });
+})
+
+// delete the calevent by id
+.delete(function(req, res) {
+  Calevent.remove({
+    _id: req.params.calevent_id
+  }, function(err, calevent) {
+    if (err)
+      res.send(err);
+
+// give some success message
+  res.json({ message: 'calevent successfully deleted!' });
+  });
 });
-} else {
-res.status(200).send({
-'status': true,
-'message': 'Success',
-'info': data
-});
-}
-}

@@ -1,31 +1,29 @@
-// Import the Modules installed to our server
-var express = require('express'),
-  bodyParser = require('body-parser');
+(function () {
+    'use strict';
+    var express = require('express');
+    var app = express();
 
-// Start the Express web framework
-var app        = express();
+    var app_config = require('./server/config/config_app.js');
+    var routes_config = require('./server/config/config_routes.js');
+    // config files
+    var db_config = require('./server/config/db');
+    // connect to our database
+    mongoose.connect(db_config.url);
+    // Check if MongoDB is running
+    mongoose.connection.on('error', function() {
+      console.error('MongoDB Connection Error. Make sureMongoDB is running.');
+    });
+    app.use('/', app_config);
+    app.use('/', routes_config);
+    app.use('/', db_config);
+    // START THE SERVER
+    console.log('STARTING THE API SERVER');
+    console.log('-------------------------');
+    app.listen(8080);
+    console.log('Started the API server');
+    process.on('uncaughtException', function (error) {
+        console.log(error.stack);
+        console.log(error);
+    });
 
-// configure app
-app.use(bodyParser());
-
-// where the application will run
-var port     = process.env.PORT || 8080;
-
-
-// Import Mongoose
-var mongoose   = require('mongoose');
-
-// connect to our database
-// you can use your own MongoDB installation at: 
-mongoose.connect('mongodb://127.0.0.1/calmapit');
-//mongoose.connect('mongodb://username:password@kahana.mongohq.com:10073/node-api');
-
-var Calevent     = require('./server/models/calevent');
-
-// Defining the Routes for our API
-var routes = require('./server/routes/calevents');
-
-app.use('/', routes);
-// Start the Node Server
-app.listen(port);
-console.log('CalMagic happens on port ' + port);
+})();
