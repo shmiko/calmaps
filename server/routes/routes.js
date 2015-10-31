@@ -4,7 +4,9 @@ var express = require('express');
 var mongoskin = require('mongoskin');
 var router = express.Router();
 //var db = mongoskin.db('mongodb://@localhost:27017/calmapit', {safe:true});
-var db = monogoskin.db('mongodb://@ec2-52-64-219-249.ap-southeast-2.compute.amazonaws.com:27017/calmapit', {safe:true});
+//var db = mongoskin.db('mongodb://@ec2-52-64-219-249.ap-southeast-2.compute.amazonaws.com:27017/calmapit', {safe:true});
+
+var db = mongoskin.db('mongodb://@52.64.219.249:27017/calmapit', {safe:true});
 // Use the below code to use mongoose instead
 // Import Mongoose
 //var mongoose   = require('mongoose');
