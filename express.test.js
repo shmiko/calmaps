@@ -37,21 +37,22 @@ describe('express rest api server', function(){
   })
 
   it('retrieves all calevents', function(done){
-    superagent.get('http://localhost:8080/collections/calevents')
+    superagent.get('http://localhost:8080/collections/' + coll)
       .end(function(e, res){
         console.log(std_console_output,res.body)
         expect(e).to.eql(null)
         expect(res.body.length).to.be.above(0)
         expect(res.body.map(function (item){return item._id})).to.contain(id)        
         done()
+        console.log("gets all calevents completed!")
       })
   })
 
 
 
 
-  it('updates an object', function(done){
-    superagent.put('http://localhost:8080/collections/calevents/'+id)
+  it('updates a calevent', function(done){
+    superagent.put('http://localhost:8080/collections/' + coll + '/' + id)
       .send({calevent_name: 'Christmas Holidays'
         , calevent_location: 'New York'})
       .end(function(e, res){
@@ -60,10 +61,11 @@ describe('express rest api server', function(){
         expect(typeof res.body).to.eql('object')
         expect(res.body.msg).to.eql('success')        
         done()
+        console.log("updates a calevent completed!")
       })
   })
-  it('checks an updated object', function(done){
-    superagent.get('http://localhost:8080/collections/calevents/'+id)
+  it('checks an updated calevent', function(done){
+    superagent.get('http://localhost:8080/collections/' + coll + '/' + id)
       .end(function(e, res){
         console.log(std_console_output,res.body)
         expect(e).to.eql(null)
@@ -76,7 +78,7 @@ describe('express rest api server', function(){
   })    
   
   it('removes an object', function(done){
-    superagent.del('http://localhost:8080/collections/calevents/'+id)
+    superagent.del('http://localhost:8080/collections/' + coll + '/' + id)
       .end(function(e, res){
         console.log(std_console_output,res.body)
         expect(e).to.eql(null)
