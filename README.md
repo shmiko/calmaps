@@ -3,4 +3,4 @@ mkdir
 clone repo
 npm install
 bower install
-node app.js
+node server.js
