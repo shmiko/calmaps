@@ -74,10 +74,11 @@ describe('express rest api server', function(){
         expect(res.body._id).to.eql(id)        
         expect(res.body.calevent_name).to.eql('Christmas Holidays')        
         done()
+        console.log("checks an updated calevent completed!")
       })
   })    
   
-  it('removes an object', function(done){
+  it('removes a calevent', function(done){
     superagent.del('http://localhost:8080/collections/' + coll + '/' + id)
       .end(function(e, res){
         console.log(std_console_output,res.body)
@@ -85,6 +86,7 @@ describe('express rest api server', function(){
         expect(typeof res.body).to.eql('object')
         expect(res.body.msg).to.eql('success')    
         done()
+        console.log("removes a calevent completed!")
       })
   })      
 })
