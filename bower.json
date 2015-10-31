@@ -1,16 +1,17 @@
 {
-  "name": "angular-ui-calendar",
+  "name": "calmap",
   "version": "1.0.1",
   "description": "A complete AngularJS directive for the Arshaw FullCalendar.",
-  "author": "https://github.com/angular-ui/ui-calendar/graphs/contributors",
+  "author": "https://github.com/shmiko/calmap",
   "license": "MIT",
-  "homepage": "http://angular-ui.github.com",
-  "main": "src/calendar.js",
+  "homepage": "http://ec2-52-64-152-94.ap-southeast-2.compute.amazonaws.com:8080/",
+  "main": "app.js",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "package.json"
+    "app/bower_components",
+    "package.json",
+    "bower.json"
   ],
   "dependencies": {
     "angular": "~1.4.1",
