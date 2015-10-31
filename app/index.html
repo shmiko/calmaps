@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calendarDemoApp" id="top">
+<head>
+    <title>CALMAP Calendar</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./bower_components/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="./bower_components/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="css/calendarDemo.css" />
+
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="./bower_components/moment/moment.js"></script>
+    <script src="./bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="./bower_components/fullcalendar/dist/gcal.js"></script>
+    <script src="scripts/calendar.js"></script>
+    <script src="scripts/calendarDemo.js"></script>
+</head>
+<body>
+<div role="main">
+    <div class="container">
+        <section id="directives-calendar" ng-controller="CalendarCtrl">
+            
+         
+
+                    <div class="span8">
+                       <!--  <tabset>
+                            <tab select="renderCalender('myCalendar1');">
+                              <tab-heading>
+                               <i class="glyphicon glyphicon-bell"></i> Calendar One
+                               </tab-heading>-->
+                          <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
+                            <h4>{{alertMessage}}</h4>
+                          </div>
+                          <div class="btn-toolbar">
+                            <p class="pull-right lead">View Options</p>
+                            <div class="btn-group">
+                                <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar1')">AgendaDay</button>
+                                <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar1')">AgendaWeek</button>
+                                <button class="btn btn-success" ng-click="changeView('month', 'myCalendar1')">Month</button>
+                            </div>
+                          </div>
+                        <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
+                           
+                    </div>
+               <!--  </div>
+            </div> -->
+           
+        
+        </section>
+    </div>
+</div>
+        
+    </body>
+</html>

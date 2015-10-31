@@ -15,14 +15,17 @@ var db = mongoskin.db('mongodb://@52.64.219.249:27017/calmapit', {safe:true});
 //mongoose.connect('mongodb://127.0.0.1/calmapit');
 //connect to remote
 //mongoose.connect('mongodb://username:password@kahana.mongohq.com:10073/node-api');
-
+//router.get('/', index.html);
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 // Defining the Routes for our API
 router.param('collectionName', function(req, res, next, collectionName){
   req.collection = db.collection(collectionName);
   return next();
 });
 
-router.get('/', function(req, res, next) {
+router.get('/?', function(req, res, next) {
   res.send('please select a collection, e.g., /collections/messages');
 })
 
