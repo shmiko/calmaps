@@ -4,7 +4,7 @@ var expect = require('expect.js')
 describe('express rest api server', function(){
   var id
   var coll = 'calevents';
-  var std_console_output = coll + " calevent. id is " + id + " response was ";
+  var std_console_output = coll + ". id is " + id + " response was ";
   
   it('post calevent', function(done){
     superagent.post('http://localhost:8080/collections/' + coll)
