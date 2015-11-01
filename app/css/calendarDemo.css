@@ -1,15 +1,28 @@
 /*** Docs ***/
 body {
 	margin-top: 40px;
+	height:100%;
+	width:100%;
 }
 section {
 	padding-top: 40px;
 }
 
 .span8 {
-	color:blue;
-	width:400px;
+	color:green;
+	width:80%;
 }
+
+.container{
+	width:90%;
+	height: 90%;
+}
+
+.main{
+	width:90%;
+	height: 90%;
+}
+
 .hero-unit {
 	position: relative;
 	padding: 40px 0;

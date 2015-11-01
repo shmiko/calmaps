@@ -266,6 +266,7 @@ angular.module('ui.calendar', [])
           if(attrs.calendar) {
             uiCalendarConfig.calendars[attrs.calendar] = calendar;
           }          
+          console.log(uiCalendarConfig.calendars[attrs.calendar].context);
         };
         scope.$on('$destroy', function() {
           scope.destroyCalendar();
