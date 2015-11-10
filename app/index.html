@@ -7,17 +7,11 @@
       <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.css">
       <link rel="stylesheet" href="css/calendarDemo.css" />
 
-      <script src="../bower_components/jquery/dist/jquery.js"></script>
 
-      <script src="../bower_components/angular/angular.js"></script>
-      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
-      <script src="../bower_components/moment/moment.js"></script>
-      <script src="../bower_components/fullcalendar/dist/fullcalendar.js"></script>
-      <script src="../bower_components/fullcalendar/dist/gcal.js"></script>
-      <script src="scripts/calendar.js"></script>
-      <script src="app.js"></script>
+
   </head>
   <body>
+  <div ng-include src="'components/navbar.html'"></div>
     <div role="main">
         <div class="container">
             <section id="directives-calendar" ng-controller="CalendarCtrl">
@@ -37,6 +31,16 @@
               </div>
             </section>
         </div>
-    </div>       
+    </div>    
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+      <script src="../bower_components/angular/angular.js"></script>
+      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+      <script src="../bower_components/moment/moment.js"></script>
+      <script src="../bower_components/fullcalendar/dist/fullcalendar.js"></script>
+      <script src="../bower_components/fullcalendar/dist/gcal.js"></script>
+      <script src="scripts/calendar.js"></script>
+      <script src="app.js"></script>
+      <script src="components/navbarController.js"></script>   
   </body>
 </html>
