@@ -21,5 +21,5 @@ app.use('/', routes);
 
 // Start the Node Server
 app.listen(port, function(){
-  console.log('Express server listening on port ',port);
+  console.log('CALMAPS Express server listening on port ',port);
 })
